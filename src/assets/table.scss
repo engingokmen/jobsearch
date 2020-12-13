@@ -1,0 +1,16 @@
+table {
+  min-width: 272px;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+@media only screen and (min-width: 510px) {
+  table {
+    min-width: 486px;
+  }
+}

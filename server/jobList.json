@@ -1,0 +1,38 @@
+{
+  "version":"1.0", "statusCode":200, 
+  "result":{
+    "items":[ 
+      {
+      "jobId":"1", "positionName":"Gerber Operatörü", "companyName":"Testoğlu Lahmacun Pide Ve Kebap", "durationDay":0,
+      "durationDayText":"Taze çıktı!",
+      "imageUrl":"http://localhost/bluecollar/Company/Job/000/000/000/avatar/ 13920170713010155805.jpg",
+      "distance":"8,53 km yakınında", "latitude":41.050968170166023, "longitude":29.062856674194339, "cityName":"İstanbul", "townName":"Çengelköy Mahallesi"
+      },
+      {
+      "jobId":"2", "positionName":"Pozisyon 2", "companyName":"Sirket 2", "durationDay":0,
+      "durationDayText":"Taze çıktı!",
+      "imageUrl":"http://localhost/bluecollar/Company/Job/000/000/000/avatar/ 13920170713010155805.jpg",
+      "distance":"8,53 km yakınında", "latitude":41.050968170166023, "longitude":29.062856674194339, "cityName":"İstanbul", "townName":"Çengelköy Mahallesi"
+      },
+      {
+      "jobId":"3", "positionName":"Pozisyon 3", "companyName":"Sirket 3", "durationDay":0,
+      "durationDayText":"Taze çıktı!",
+      "imageUrl":"http://localhost/bluecollar/Company/Job/000/000/000/avatar/ 13920170713010155805.jpg",
+      "distance":"8,53 km yakınında", "latitude":41.050968170166023, "longitude":29.062856674194339, "cityName":"Ağrı", "townName":"Çengelköy Mahallesi"
+      },
+      {
+      "jobId":"4", "positionName":"Pozisyon 4", "companyName":"Sirket 4", "durationDay":0,
+      "durationDayText":"Taze çıktı!",
+      "imageUrl":"http://localhost/bluecollar/Company/Job/000/000/000/avatar/ 13920170713010155805.jpg",
+      "distance":"8,53 km yakınında", "latitude":41.050968170166023, "longitude":29.062856674194339, "cityName":"Ankara", "townName":"Çengelköy Mahallesi"
+      },
+      {
+      "jobId":"5", "positionName":"Pozisyon 5", "companyName":"Sirket 5", "durationDay":0,
+      "durationDayText":"Taze çıktı!",
+      "imageUrl":"http://localhost/bluecollar/Company/Job/000/000/000/avatar/ 13920170713010155805.jpg",
+      "distance":"8,53 km yakınında", "latitude":41.050968170166023, "longitude":29.062856674194339, "cityName":"İzmir", "townName":"Çengelköy Mahallesi"
+      } 
+    ],
+    "total":5 
+  }
+}
