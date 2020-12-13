@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
-  watch: true,
+  // watch: true,
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -33,11 +33,11 @@ module.exports = {
             loader: "sass-loader",
             options: {
               // Prefer `dart-sass`
-              implementation: require("sass"),
-            },
-          },
-        ],
-      },
+              implementation: require("sass")
+            }
+          }
+        ]
+      }
     ]
   },
   devServer: {
@@ -51,5 +51,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html")
     })
-  ],
+  ]
 };
