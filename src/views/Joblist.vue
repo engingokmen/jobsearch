@@ -19,29 +19,28 @@
         @focus="clearSearchLocation"
       />
     </div>
-    <Listing :error="error" :loading="loading" :list="filteredData" />
+    <Listing />
   </div>
 </template>
 
 <script>
 import Listing from "../components/Listing.vue";
+import { mapState, mapActions } from "vuex";
 export default {
   components: {
     Listing
   },
   data() {
     return {
-      loading: false,
-      error: null,
-      items: null,
       searchLocation: null,
       searchKeyword: null
     };
   },
   computed: {
+    ...mapState(["joblist"]),
     filteredData: function() {
       if (this.searchLocation != null) {
-        return this.items.filter(item => {
+        return this.joblist.filter(item => {
           return (
             item.cityName
               .toLocaleLowerCase("tr")
@@ -49,7 +48,7 @@ export default {
           );
         });
       } else if (this.searchKeyword != null) {
-        return this.items.filter(item => {
+        return this.joblist.filter(item => {
           return (
             Object.values(item).filter(x => {
               return (
@@ -61,11 +60,12 @@ export default {
           );
         });
       } else {
-        return this.items;
+        return this.joblist;
       }
     }
   },
   methods: {
+    ...mapActions(["getJoblist"]),
     clearSearchLocation() {
       this.searchLocation = null;
     },
@@ -74,20 +74,7 @@ export default {
     }
   },
   mounted() {
-    fetch("/api/joblist")
-      .then(res => {
-        this.loading = true;
-        return res.json();
-      })
-      .then(data => {
-        this.items = data.items;
-      })
-      .catch(() => {
-        this.error = true;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    this.getJoblist();
   }
 };
 </script>

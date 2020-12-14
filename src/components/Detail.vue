@@ -1,18 +1,18 @@
 <template>
-  <section v-if="error">
+  <section v-if="jobdetailError">
     <p>
       Bir sorunla karşılaşıldı, lütfen daha sonra tekrar deneyiniz.
     </p>
   </section>
 
   <section v-else>
-    <div v-if="loading">Loading...</div>
+    <div v-if="jobdetailLoading">Loading...</div>
     <div v-else class="detail">
       <ul>
         <li
           class="list-item"
-          v-for="info in data &&
-            Object.entries(data).filter(
+          v-for="info in jobdetail &&
+            Object.entries(jobdetail).filter(
               x =>
                 x[0] !== 'contactPhone' &&
                 x[0] !== 'imageUrl' &&
@@ -23,22 +23,22 @@
           {{ info[0] }}: {{ info[1] }}
         </li>
         <li class="list-item">
-          <a :href="`https://maps.google.com/?q=${get(data, 'address')}`">
-            <address>{{ get(data, "address") }}</address>
+          <a :href="`https://maps.google.com/?q=${get(jobdetail, 'address')}`">
+            <address>{{ get(jobdetail, "address") }}</address>
           </a>
         </li>
         <li class="list-item">
           <a
             :href="
-              `tel:${get(data, 'contactPhone.countryCallingCode')}${get(
-                data,
+              `tel:${get(jobdetail, 'contactPhone.countryCallingCode')}${get(
+                jobdetail,
                 'contactPhone.areaCode'
-              )}${get(data, 'contactPhone.number')}`
+              )}${get(jobdetail, 'contactPhone.number')}`
             "
           >
-            {{ get(data, "contactPhone.countryCallingCode") }}
-            {{ get(data, "contactPhone.areaCode") }}
-            {{ get(data, "contactPhone.number") }}
+            {{ get(jobdetail, "contactPhone.countryCallingCode") }}
+            {{ get(jobdetail, "contactPhone.areaCode") }}
+            {{ get(jobdetail, "contactPhone.number") }}
           </a>
         </li>
       </ul>
@@ -49,6 +49,8 @@
 <script>
 import { screenSizes } from "../helper/constants";
 import { get } from "lodash";
+import { mapState } from "vuex";
+
 export default {
   props: {
     error: {
@@ -67,6 +69,9 @@ export default {
       scrSizes: screenSizes,
       screenWidth: window.screen.width
     };
+  },
+  computed: {
+    ...mapState(["jobdetail", "jobdetailLoading", "jobdetailError"])
   },
   created() {
     window.addEventListener("resize", this.handleResize);

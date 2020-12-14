@@ -1,13 +1,15 @@
 <template>
   <div>
-    <h2 v-if="data == null">Loading...</h2>
-    <h2 v-else>{{ data.positionName }}</h2>
-    <Detail :data="data" />
+    <h2 v-if="jobdetailLoading">Loading...</h2>
+    <h2 v-else>{{ jobdetail.positionName }}</h2>
+    <Detail />
   </div>
 </template>
 
 <script>
 import Detail from "../components/Detail.vue";
+import { mapState, mapActions } from "vuex";
+
 export default {
   components: {
     Detail
@@ -18,21 +20,14 @@ export default {
       data: null
     };
   },
+  computed: {
+    ...mapState(["jobdetail", "jobdetailLoading"])
+  },
+  methods: {
+    ...mapActions(["getJobdetail"])
+  },
   mounted() {
-    fetch(`/api/jobdetail/${this.id}`)
-      .then(res => {
-        this.loading = true;
-        return res.json();
-      })
-      .then(data => {
-        this.data = data;
-      })
-      .catch(() => {
-        this.error = true;
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+    this.getJobdetail({ id: this.id });
   }
 };
 </script>

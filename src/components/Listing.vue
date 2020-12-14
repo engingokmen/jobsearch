@@ -1,19 +1,19 @@
 <template>
-  <section v-if="error">
+  <section v-if="joblistError">
     <p>
       Bir sorunla karşılaşıldı, lütfen daha sonra tekrar deneyiniz.
     </p>
   </section>
 
   <section v-else>
-    <div v-if="loading">Loading...</div>
+    <div v-if="joblistLoading">Loading...</div>
     <table v-else>
       <tr>
         <th>Şirket</th>
         <th>Pozisyon</th>
         <th v-if="screenWidth > scrSizes.xs">Şehir</th>
       </tr>
-      <tr v-for="item in list" :key="item.id">
+      <tr v-for="item in joblist" :key="item.id">
         <td>{{ item.companyName }}</td>
         <td>
           <router-link
@@ -34,24 +34,16 @@
 <script>
 import { screenSizes } from "../helper/constants";
 import { get } from "lodash";
+import { mapState } from "vuex";
 export default {
-  props: {
-    error: {
-      type: Boolean
-    },
-    loading: {
-      type: Boolean
-    },
-    list: {
-      type: Array,
-      default: () => []
-    }
-  },
   data() {
     return {
       scrSizes: screenSizes,
       screenWidth: window.screen.width
     };
+  },
+  computed: {
+    ...mapState(["joblist", "joblistLoading", "joblistError"])
   },
   created() {
     window.addEventListener("resize", this.handleResize);
