@@ -19,13 +19,13 @@
         @focus="clearSearchLocation"
       />
     </div>
-    <Listing />
+    <Listing :searchLocation="searchLocation" :searchKeyword="searchKeyword" />
   </div>
 </template>
 
 <script>
 import Listing from "../components/Listing.vue";
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     Listing
@@ -38,31 +38,32 @@ export default {
   },
   computed: {
     ...mapState(["joblist"]),
-    filteredData: function() {
-      if (this.searchLocation != null) {
-        return this.joblist.filter(item => {
-          return (
-            item.cityName
-              .toLocaleLowerCase("tr")
-              .match(this.searchLocation.toLocaleLowerCase("tr")) !== null
-          );
-        });
-      } else if (this.searchKeyword != null) {
-        return this.joblist.filter(item => {
-          return (
-            Object.values(item).filter(x => {
-              return (
-                String(x)
-                  .toLocaleLowerCase("tr")
-                  .match(this.searchKeyword.toLocaleLowerCase("tr")) !== null
-              );
-            }).length !== 0
-          );
-        });
-      } else {
-        return this.joblist;
-      }
-    }
+    ...mapGetters(["getListFiltered"])
+    // filteredData: function() {
+    //   if (this.searchLocation != null) {
+    //     return this.joblist.filter(item => {
+    //       return (
+    //         item.cityName
+    //           .toLocaleLowerCase("tr")
+    //           .match(this.searchLocation.toLocaleLowerCase("tr")) !== null
+    //       );
+    //     });
+    //   } else if (this.searchKeyword != null) {
+    //     return this.joblist.filter(item => {
+    //       return (
+    //         Object.values(item).filter(x => {
+    //           return (
+    //             String(x)
+    //               .toLocaleLowerCase("tr")
+    //               .match(this.searchKeyword.toLocaleLowerCase("tr")) !== null
+    //           );
+    //         }).length !== 0
+    //       );
+    //     });
+    //   } else {
+    //     return this.joblist;
+    //   }
+    // }
   },
   methods: {
     ...mapActions(["getJoblist"]),

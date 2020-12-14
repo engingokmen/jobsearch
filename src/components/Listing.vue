@@ -13,7 +13,10 @@
         <th>Pozisyon</th>
         <th v-if="screenWidth > scrSizes.xs">Şehir</th>
       </tr>
-      <tr v-for="item in joblist" :key="item.id">
+      <tr
+        v-for="item in getListFiltered(searchLocation, searchKeyword)"
+        :key="item.id"
+      >
         <td>{{ item.companyName }}</td>
         <td>
           <router-link
@@ -34,8 +37,9 @@
 <script>
 import { screenSizes } from "../helper/constants";
 import { get } from "lodash";
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 export default {
+  props: ["searchLocation", "searchKeyword"],
   data() {
     return {
       scrSizes: screenSizes,
@@ -43,7 +47,8 @@ export default {
     };
   },
   computed: {
-    ...mapState(["joblist", "joblistLoading", "joblistError"])
+    ...mapState(["joblist", "joblistLoading", "joblistError"]),
+    ...mapGetters(["getListFiltered"])
   },
   created() {
     window.addEventListener("resize", this.handleResize);

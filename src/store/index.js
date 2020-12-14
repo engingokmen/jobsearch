@@ -67,8 +67,30 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    loggedIn(state) {
-      return !!state.user;
+    getListFiltered: state => (searchLocation, searchKeyword) => {
+      if (searchLocation != null) {
+        return state.joblist.filter(item => {
+          return (
+            item.cityName
+              .toLocaleLowerCase("tr")
+              .match(searchLocation.toLocaleLowerCase("tr")) !== null
+          );
+        });
+      } else if (searchKeyword != null) {
+        return state.joblist.filter(item => {
+          return (
+            Object.values(item).filter(x => {
+              return (
+                String(x)
+                  .toLocaleLowerCase("tr")
+                  .match(searchKeyword.toLocaleLowerCase("tr")) !== null
+              );
+            }).length !== 0
+          );
+        });
+      } else {
+        return state.joblist;
+      }
     }
   }
 });
