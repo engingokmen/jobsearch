@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const history = require("connect-history-api-fallback");
-const jobList = require("./jobList.json");
-const jobDetails = require("./jobDetails.json");
+// const jobList = require("./jobList.json");
+// const jobDetails = require("./jobDetails.json");
 
 const app = express();
 
