@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const history = require("connect-history-api-fallback");
 const jobList = require("./jobList.json");
 const jobDetails = require("./jobDetails.json");
 
@@ -37,6 +38,7 @@ app.get("/api/jobdetail/:id", function(req, res) {
   }
 });
 
+app.use(history());
 app.use(staticFileMiddleware);
 
 const port = process.env.PORT || 3000;
