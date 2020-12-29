@@ -44,7 +44,7 @@ app.get("/api/jobdetail/:id", function(req, res) {
   }
 });
 
-app.use(history());
+// app.use(history());
 app.use(staticFileMiddleware);
 
 const port = 8000;
