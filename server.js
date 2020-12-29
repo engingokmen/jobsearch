@@ -6,7 +6,7 @@ const jobDetails = require("./jobDetails.json");
 
 const app = express();
 
-const staticFileMiddleware = express.static(path.join(__dirname, "../dist"));
+const staticFileMiddleware = express.static(path.join(__dirname, "dist"));
 
 app.get("/api/joblist", function(req, res) {
   res.status(jobList.statusCode);
