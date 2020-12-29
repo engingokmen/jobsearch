@@ -47,7 +47,7 @@ app.get("/api/jobdetail/:id", function(req, res) {
 // app.use(history());
 app.use(staticFileMiddleware);
 
-const port = 8000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, function() {
   console.log("App now running on port", port);
