@@ -1,14 +1,7 @@
-console.log("serverrrrrrr fileeeee");
 const express = require("express");
-console.log("serverrrrrrr fileeeee 1");
 const path = require("path");
-console.log("serverrrrrrr fileeeee 2");
-// const history = require("connect-history-api-fallback");
-console.log("serverrrrrrr fileeeee 3");
 const jobList = require("./jobList.json");
-console.log("serverrrrrrr fileeeee 4");
 const jobDetails = require("./jobDetails.json");
-console.log("serverrrrrrr fileeeee 5");
 
 const app = express();
 
@@ -44,7 +37,6 @@ app.get("/api/jobdetail/:id", function(req, res) {
   }
 });
 
-// app.use(history());
 app.use(staticFileMiddleware);
 
 const port = process.env.PORT || 3000;
