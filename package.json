@@ -7,9 +7,8 @@
     "node": "14.0.0"
   },
   "scripts": {
-    "serve": "node ./server/server.js",
+    "start": "node ./server/server.js",
     "build": "webpack",
-    "start": "nodemon -e css ./server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
