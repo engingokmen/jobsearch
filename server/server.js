@@ -3,7 +3,7 @@ const express = require("express");
 console.log("serverrrrrrr fileeeee 1");
 const path = require("path");
 console.log("serverrrrrrr fileeeee 2");
-const history = require("connect-history-api-fallback");
+// const history = require("connect-history-api-fallback");
 console.log("serverrrrrrr fileeeee 3");
 const jobList = require("./jobList.json");
 console.log("serverrrrrrr fileeeee 4");
