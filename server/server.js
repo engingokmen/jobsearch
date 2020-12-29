@@ -5,6 +5,8 @@ const history = require("connect-history-api-fallback");
 const jobList = require("./jobList.json");
 const jobDetails = require("./jobDetails.json");
 
+console.log("serverrrrrrr fileeeee2");
+
 const app = express();
 
 const staticFileMiddleware = express.static(path.join(__dirname, "../dist"));
